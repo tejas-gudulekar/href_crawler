@@ -3,7 +3,7 @@ href_crawler is a python script that crawls through the targetted website and lo
 
 # USAGE:
 
-git clone 
+git clone https://github.com/tejas-gudulekar/href_crawler.git
 
 cd href_crawler
 
