@@ -1,3 +1,6 @@
+
+#!/usr/bin/env python2
+
 import os
 
 os.system("sudo python2 -m pip install requests")
