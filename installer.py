@@ -1,6 +1,6 @@
 import os
 
-os.system("sudo pip install requests ")
+os.system("sudo python2 -m pip install requests")
+os.systen("sudo python2 -m pip install urlparse2")
 os.system("sudo apt install re ")
-os.systen("pip2 install urlparse2")
 os.system("sudo chmod +x href_crawler.py")
