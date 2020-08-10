@@ -1,5 +1,3 @@
-#!/usr/bin/env python2
-
 import requests
 import re
 import urlparse
@@ -58,21 +56,25 @@ def write_file(path, content):
 
 
 try:
-    session = requests.Session()
-    target = raw_input("\033[01mEnter the target link!! --> ").strip()
-    is_login = raw_input("Is there any login page in the website!! (yes/no) --> ").lower()
     try:
-        if is_login == "yes" or is_login == "y":
-            login_to_website()
-        file_name = raw_input("\033[94mEnter the file name to save the output!! --> ")
-        if ".txt" not in file_name:
-            file_name = file_name + ".txt"
-        print("\033[92m[+] Running the crawler!!")
-        crawl(target)
-        print("\033[92m[+] Writing the Crawler output in " + file_name)
-        write_file(file_name, target_link_list)
-        print("\033[94m[+] Output saved in " + file_name)
-    except requests.exceptions.MissingSchema:
-        print("\033[91m[-] Invalid url, do you mean http://" + target)
+        session = requests.Session()
+        target = raw_input("\033[01mEnter the target link!! --> ").strip()
+        is_login = raw_input("Is there any login page in the website!! (yes/no) --> ").lower()
+        try:
+            if is_login == "yes" or is_login == "y":
+                login_to_website()
+            file_name = raw_input("\033[94mEnter the file name to save the output!! --> ")
+            if ".txt" not in file_name:
+                file_name = file_name + ".txt"
+            print("\033[92m[+] Running the crawler!!")
+            crawl(target)
+            print("\033[92m[+] Writing the Crawler output in " + file_name)
+            write_file(file_name, target_link_list)
+            print("\033[94m[+] Output saved in " + file_name)
+        except requests.exceptions.MissingSchema:
+            print("\033[91m[-] Invalid url, do you mean http://" + target)
+    except requests.exceptions.ConnectionError:
+        print("\033[91m[-] Connection Error")
 except KeyboardInterrupt:
     print("\033[93m\nQuitting the script!! ")
+
